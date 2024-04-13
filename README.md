@@ -1,10 +1,8 @@
 # Local Dev
 
-## Running Locally
-
 When wanting to do development:
-run `docker compose build`
-run `docker compose up -d`
+1. run `docker compose build`
+2. run `docker compose up -d`
 
 When finished:
-run `docker compose down`
+1. run `docker compose down`
