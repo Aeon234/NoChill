@@ -1,25 +1,13 @@
-import logo from "./logo.svg";
+import logo from "./NoChill_Title.png";
+import divider from "./Background/Divider.png";
+import divider2 from "./Background/Border_3.png";
 import "./App.css";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import { useEffect } from "react";
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-
     <>
       <meta charSet="utf-8" />
       <title>Aeon's Home</title>
@@ -40,25 +28,22 @@ function App() {
                 style={{ letterSpacing: "0em" }}
               >
                 <a href="/">
-                  <img src="/NoChill_Title.png" alt="No Chill Guild" />
+                  <img src={logo} alt="No Chill Guild" />
                 </a>
               </div>
             </div>
-            {/* <nav class="nav-bar">
-              <ul>Classdropdown-input
-                  <li><a href="/index.html">Home</a></li>
-                  <li><a class="current-page" href="/nochill.html">About</a></li>
-                  <li><a href="/blog.html">Blog</a></li>
-                  <li><a href="/contactus.html">Contact</a></li>
-              </ul>
-          </nav> */}
           </div>
         </header>
+        <div id="dropdowntest"></div>
+
         <main>
           <div className="RosterClassQuestionnaire">
             <h2 className="QuestionnaireTitle">
               No Chill - The War Within Roster
             </h2>
+            <div className="Divider">
+              <img src={divider} />
+            </div>
             <div className="PlayerName">
               <h3 className="QuestionLabel">Your name?</h3>
               <input
@@ -186,6 +171,12 @@ function App() {
                   placeholder="Anything you want to add?"
                 />
               </div>
+            </div>
+            <div className="SubmitForm">
+              <Button variant="contained">Hello world</Button>
+            </div>
+            <div className="Divider">
+              <img src={divider2} />
             </div>
           </div>
         </main>
