@@ -8,16 +8,6 @@
   pointer-events: none;
 }
 
-.Divider {
-  justify-content: center;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.Divider img {
-  width: 100%;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -33,12 +23,26 @@
   color: #61dafb;
 }
 html {
-  background-color: #d4d4d4;
+  background-image: url("Background/WarWithin.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #19181d;
 }
 
 #header-container {
   padding-left: 20px;
+  padding-top: 5px;
   height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 #header-title {
   height: 100%;
@@ -60,18 +64,35 @@ html {
 .icon-arrow:before {
   content: "\e625";
 }
+.Questionnaire {
+  position: relative;
+  width: 1860px;
+  height: 1064px;
+  margin: auto;
+  background: #363c52;
+  border-image-source: url("Background/Questionnaire_Border.png");
+  border-image-slice: 30 fill;
+  border-image-width: 30px;
+  border-image-outset: 20px;
+  justify-content: center;
+}
 
 .RosterClassQuestionnaire {
+  /* border-image: url("Background/Questionnaire_Border.png") 30 fill / 30px / 40px; */
+
   display: block;
-  width: 50%;
   justify-content: center;
-  background: #fff;
-  border-radius: 5px;
+
+  /* border-radius: 5px; */
   padding: 40px;
   /* box-shadow: 0px 0px 50px black; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: auto;
+  /* box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
+    0 10px 10px 0 rgba(0, 0, 0, 0.25); */
   margin-top: 100px;
+}
+
+.WoWClass {
+  margin-left: 80px;
 }
 
 /* ------------------------------------------------------------------------------------------ */
@@ -80,9 +101,41 @@ html {
 .QuestionnaireTitle {
   text-align: center;
   margin-top: 0px;
+  color: #fff;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 199, 133, 0.9) 19.57%,
+      rgba(250, 199, 47, 0.9) 44.19%,
+      rgba(255, 199, 133, 0.9) 73.91%
+    ),
+    #ffffff;
+  background-clip: border-box, border-box;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: normal;
+  font: var(--font-accent-alt-900);
+  text-transform: uppercase;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.Divider {
+  margin-top: -20px;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Divider img {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .PlayerName {
+  margin-top: -20px;
+  margin-left: 90px;
   justify-content: center;
 }
 
@@ -91,6 +144,7 @@ html {
   margin-top: 30px;
   margin-left: 10px;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
 .PlayerNameText {
@@ -124,22 +178,19 @@ html {
   outline: 2px solid hsla(220, 100%, 50%, 80%);
 }
 
-@media (max-width: 2465px) {
-  .ClassQuestions {
-    display: block;
-  }
-}
-@media (min-width: 2466px) {
-  .ClassQuestions {
-    display: flex;
-  }
-}
-
 .ClassQuestions {
+  display: block;
   margin-top: -15px;
   margin-left: 10px;
   margin-bottom: 0.5rem;
-  /* justify-content: center; */
+}
+
+@media (min-width: 2300px) {
+  .ClassQuestions {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .ClassLabel {
@@ -156,9 +207,9 @@ html {
   margin-bottom: 0.5rem;
   position: relative;
 
-  width: 200px;
+  width: 400px;
 
-  color: #000;
+  color: #fff;
 }
 
 .SpecDropdown {
@@ -171,7 +222,7 @@ html {
 
   width: 465px;
 
-  color: #000;
+  color: #fff;
 }
 
 .CommentSection {
@@ -184,7 +235,7 @@ html {
 
   width: 465px;
 
-  color: #000;
+  color: #fff;
 }
 
 .ChoiceText {
@@ -221,232 +272,53 @@ html {
   outline: 2px solid hsla(220, 100%, 50%, 80%);
 }
 
-.ClassDropdown.active .ClassDropdown-ul {
-  display: block;
-}
-
-.ClassDropdown.active .SpecDropdown-ul {
-  display: block;
-}
-
-.ClassDropdown-input {
-  width: 100%;
-
-  height: 50px;
-
-  border-radius: 5px;
-
-  outline: 0;
-
-  font-size: 18px;
-
-  font-weight: 400;
-}
-
-.SpecDropdown-input {
-  width: 100%;
-
-  height: 50px;
-
-  border-radius: 5px;
-
-  outline: 0;
-
-  font-size: 18px;
-
-  font-weight: 400;
-}
-
-.ClassDropdown-input:focus {
-  border: 1px solid #aa0000;
-
-  outline: 0;
-}
-
-i {
-  position: absolute;
-
-  right: 20px;
-
-  top: 18px;
-
-  transition: transform 0.2s ease;
-}
-
-.SpecDropdown-input:focus {
-  border: 1px solid #aa0000;
-
-  outline: 0;
-}
-
-i {
-  position: absolute;
-
-  right: 20px;
-
-  top: 18px;
-
-  transition: transform 0.2s ease;
-}
-
-.ClassDropdown.active i {
-  transform: rotate(270deg);
-}
-
-.SpecDropdown.active i {
-  transform: rotate(270deg);
-}
-
-.ClassDropdown-ul {
-  display: none;
-
-  position: absolute;
-
-  margin: 5px 0 0 0;
-
-  padding: 0;
-
-  width: 100%;
-
-  max-height: 3000px;
-
-  top: 100%;
-
-  left: 0;
-
-  list-style: none;
-
-  border-radius: 2px;
-
-  background: #fff;
-
-  overflow: hidden;
-
-  overflow-y: auto;
-
-  z-index: 100;
-
-  font-size: 18px;
-
-  font-weight: 400;
-}
-
-.SpecDropdown-ul {
-  display: none;
-
-  position: absolute;
-
-  margin: 5px 0 0 0;
-
-  padding: 0;
-
-  width: 100%;
-
-  max-height: 3000px;
-
-  top: 100%;
-
-  left: 0;
-
-  list-style: none;
-
-  border-radius: 2px;
-
-  background: #fff;
-
-  overflow: hidden;
-
-  overflow-y: auto;
-
-  z-index: 100;
-
-  font-size: 18px;
-
-  font-weight: 400;
-}
-
-.ClassDropdown-ul li {
-  display: block;
-
-  text-align: left;
-
-  padding: 0.8em 1em 0.8em 1em;
-
-  color: #000;
-
-  cursor: pointer;
-}
-
-.SpecDropdown-ul li {
-  display: block;
-
-  text-align: left;
-  height: 100%;
-
-  padding: 0.8em 1em 0.8em 1em;
-
-  color: #000;
-
-  cursor: pointer;
-}
-
-.list-item-dk_ul:hover {
-  background: #c41e3a;
-  color: #fff;
-}
-.list-item-dh_ul:hover {
-  background: #a330c9;
-  color: #fff;
-}
-
-.list-item-druid_ul:hover {
-  background: #ff7c0a;
-  color: #fff;
-}
-.list-item-evoker_ul:hover {
-  background: #33937f;
-  color: #fff;
-}
-.list-item-hunter_ul:hover {
-  background: #aad372;
-  color: #000;
-}
-.list-item-mage_ul:hover {
-  background: #3fc7eb;
-  color: #fff;
-}
-.list-item-monk_ul:hover {
-  background: #00ff98;
-  color: #000;
-}
-.list-item-paladin_ul:hover {
-  background: #f48cba;
-  color: #fff;
-}
-.list-item-priest_ul:hover {
-  background: #eeeeee;
-  color: #000000;
-}
-.list-item-rogue_ul:hover {
-  background: #fff468;
-  color: #000;
-}
-.list-item-shaman_ul:hover {
-  background: #0070dd;
-  color: #fff;
-}
-.list-item-warlock_ul:hover {
-  background: #8788ee;
-  color: #fff;
-}
-.list-item-warrior_ul:hover {
-  background: #c69b6d;
-  color: #fff;
-}
-
 .SubmitForm {
-  display: flex;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
   justify-content: center;
-  margin-top: 30px;
   padding: 10px;
+}
+
+.SubmitButton {
+  font-family: semplicitapro, sans-serif;
+  background: none;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-image: url("Background/Button/button_background.png");
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+
+  border-image: url("Background/Button/button_primary.png") 30 fill / 30px / 1px;
+  color: #e2d29f;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0px;
+  min-width: 282px;
+  min-height: 60px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.SubmitButton:hover {
+  border-image: url("Background/Button/button_hover.png") 30 fill / 30px / 1px;
+  color: #fff;
+}
+
+.SubmitButton:disabled {
+  border-image: url("Background/Button/button_disabled.png") 30 fill / 30px /
+    1px;
+  background-image: url("Background/Button/button_background_disabled.png");
+  color: #fffc;
+}
+.SubmitButton:disabled:hover {
+  border-image: url("Background/Button/button_disabled_hover.png") 30 fill /
+    30px / 1px;
+  color: #fff;
 }

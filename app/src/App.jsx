@@ -1,4 +1,5 @@
 import logo from "./NoChill_Title.png";
+import favicon from "./favicon.ico";
 import divider from "./Background/Divider.png";
 import divider2 from "./Background/Border_3.png";
 import "./App.css";
@@ -8,6 +9,9 @@ import { useState } from "react";
 import Select from "react-select";
 
 function App() {
+  document.title = "No Chill Roster";
+  const [PlayersName, setPlayerName] = useState("");
+
   const [WoWClass1, setWowClass1] = useState(null);
   const [spec1, setSpec1] = useState([]);
   const [speclist1, setSpeclist1] = useState([]);
@@ -22,6 +26,12 @@ function App() {
 
   const scriptUrl =
     "https://script.google.com/macros/s/AKfycbyk0fXddO5b7SOyGtfjlXKaf_XmgMpIQ4AlXqTVwba7OwL6PQVfAeakvGZmRqg47IQw/exec";
+  // const DisableSubmit = false;
+  const DisableSubmit = !(
+    document.getElementById("PlayerName_Input")?.value &&
+    WoWClass1?.name &&
+    spec1?.map((obj) => obj.spec)?.join(", ")
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,6 +78,10 @@ function App() {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
+  };
+
+  const handlePlayerNameChange = (obj) => {
+    setPlayerName(obj);
   };
 
   const handleWoWClassChange1 = (obj) => {
@@ -172,7 +186,7 @@ function App() {
     <>
       <meta charSet="utf-8" />
       <title>Aeon's Home</title>
-      <link rel="icon" href="icon.png" type="image/x-icon" />
+      <link rel="icon" href={favicon} />
       <meta name="author" content="Alex Iukuridze" />
       <meta
         name="description"
@@ -197,191 +211,203 @@ function App() {
         </header>
 
         <main>
-          <div className="RosterClassQuestionnaire">
-            <h2 className="QuestionnaireTitle">
-              No Chill - The War Within Roster
-            </h2>
-            <div className="Divider">
-              <img src={divider} />
-            </div>
-            <form method="post" action={scriptUrl} name="NoChill_Roster_Form">
-              <div className="PlayerName">
-                <h3 className="QuestionLabel">Your name?</h3>
-                <input
-                  id="PlayerName_Input"
-                  name="Player Name"
-                  className="PlayerNameText"
-                  type="text"
-                  placeholder="e.g. Aeon"
-                />
+          <div className="Questionnaire">
+            <div className="RosterClassQuestionnaire">
+              <h2 className="QuestionnaireTitle">
+                No Chill - The War Within Roster
+              </h2>
+              <div className="Divider">
+                <img src={divider} />
               </div>
-              <div className="FirstClass">
-                <div className="ClassLabel">
-                  <h3 className="QuestionLabel">
-                    What's your top choice class/spec to play?
-                  </h3>
+              <form
+                className="QuestionnaireForm"
+                method="post"
+                action={scriptUrl}
+                name="NoChill_Roster_Form"
+              >
+                <div className="PlayerName">
+                  <h3 className="QuestionLabel">Your name?</h3>
+                  <input
+                    id="PlayerName_Input"
+                    name="Player Name"
+                    className="PlayerNameText"
+                    value={PlayersName}
+                    onChange={(x) => handlePlayerNameChange(x.target.value)}
+                    type="text"
+                    placeholder="e.g. Aeon"
+                  />
                 </div>
-                <div className="ClassQuestions">
-                  <div className="ClassDropdown">
-                    <br />
-                    <b>First Choice Class:</b>
-                    <Select
-                      id="ClassChoice1"
-                      name="First Class"
-                      className="ClassDropdown-input"
-                      placeholder="1st Choice Class"
-                      value={WoWClass1}
-                      options={WoWClassesTable}
-                      onChange={handleWoWClassChange1}
-                      getOptionLabel={(x) => x.name}
-                      getOptionValue={(x) => x.name}
-                      styles={SelectStyle}
-                    />
+                <div className="WoWClass">
+                  <div className="ClassLabel">
+                    <h3 className="QuestionLabel">
+                      What's your top choice class/spec to play?
+                    </h3>
                   </div>
-                  <div className="SpecDropdown">
-                    <br />
-                    <b>First Class's Specs:</b>
-                    <Select
-                      id="SpecChoice1"
-                      name="First Class' Specs"
-                      className="SpecDropdown-input"
-                      placeholder="Select Specialization(s)"
-                      value={spec1}
-                      options={speclist1}
-                      onChange={handleSpecChange1}
-                      getOptionLabel={(x) => x.spec}
-                      getOptionValue={(x) => x.spec}
-                      isMulti
-                      styles={SelectStyle}
-                      closeMenuOnSelect={false}
-                    />
-                  </div>
-                  <div className="CommentSection">
-                    <br />
-                    <b>Optional Comments:</b>
-                    <input
-                      id="Choice1Text"
-                      name="First Class Comments"
-                      className="ChoiceText"
-                      type="text"
-                      placeholder="Anything you want to add?"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="SecondClass">
-                <div className="ClassLabel">
-                  <h3 className="QuestionLabel">2nd choice class/spec?</h3>
-                </div>
-                <div className="ClassQuestions">
-                  <div className="ClassDropdown">
-                    <br />
-                    <b>Second Choice Class:</b>
-                    <Select
-                      id="ClassChoice2"
-                      name="Second Class"
-                      className="ClassDropdown-input"
-                      placeholder="2nd Choice Class"
-                      value={WoWClass2}
-                      options={WoWClassesTable}
-                      onChange={handleWoWClassChange2}
-                      getOptionLabel={(x) => x.name}
-                      getOptionValue={(x) => x.name}
-                      styles={SelectStyle}
-                    />
-                  </div>
-                  <div className="SpecDropdown">
-                    <br />
-                    <b>Second Class's Specs:</b>
-                    <Select
-                      id="SpecChoice2"
-                      name="Second Class' Specs"
-                      className="SpecDropdown-input"
-                      placeholder="Select Specialization(s)"
-                      value={spec2}
-                      options={speclist2}
-                      onChange={handleSpecChange2}
-                      getOptionLabel={(x) => x.spec}
-                      getOptionValue={(x) => x.spec}
-                      isMulti
-                      styles={SelectStyle}
-                      closeMenuOnSelect={false}
-                    />
-                  </div>
-                  <div className="CommentSection">
-                    <br />
-                    <b>Optional Comments:</b>
-                    <input
-                      id="Choice2Text"
-                      name="Second Class' Specs"
-                      className="ChoiceText"
-                      type="text"
-                      placeholder="Anything you want to add?"
-                    />
+                  <div className="ClassQuestions">
+                    <div className="ClassDropdown">
+                      <br />
+                      <b>First Choice Class:</b>
+                      <Select
+                        id="ClassChoice1"
+                        name="First Class"
+                        className="ClassDropdown-input"
+                        placeholder="1st Choice Class"
+                        value={WoWClass1}
+                        options={WoWClassesTable}
+                        onChange={handleWoWClassChange1}
+                        getOptionLabel={(x) => x.name}
+                        getOptionValue={(x) => x.name}
+                        styles={SelectStyle}
+                      />
+                    </div>
+                    <div className="SpecDropdown">
+                      <br />
+                      <b>First Class's Specs:</b>
+                      <Select
+                        id="SpecChoice1"
+                        name="First Class' Specs"
+                        className="SpecDropdown-input"
+                        placeholder="Select Specialization(s)"
+                        value={spec1}
+                        options={speclist1}
+                        onChange={handleSpecChange1}
+                        getOptionLabel={(x) => x.spec}
+                        getOptionValue={(x) => x.spec}
+                        isMulti
+                        styles={SelectStyle}
+                        closeMenuOnSelect={false}
+                      />
+                    </div>
+                    <div className="CommentSection">
+                      <br />
+                      <b>Optional Comments:</b>
+                      <input
+                        id="Choice1Text"
+                        name="First Class Comments"
+                        className="ChoiceText"
+                        type="text"
+                        placeholder="Anything you want to add?"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="ThirdClass">
-                <div className="ClassLabel">
-                  <h3 className="QuestionLabel">3rd choice class spec?</h3>
+                <div className="WoWClass">
+                  <div className="ClassLabel">
+                    <h3 className="QuestionLabel">2nd choice class/spec?</h3>
+                  </div>
+                  <div className="ClassQuestions">
+                    <div className="ClassDropdown">
+                      <br />
+                      <b>Second Choice Class:</b>
+                      <Select
+                        id="ClassChoice2"
+                        name="Second Class"
+                        className="ClassDropdown-input"
+                        placeholder="2nd Choice Class"
+                        value={WoWClass2}
+                        options={WoWClassesTable}
+                        onChange={handleWoWClassChange2}
+                        getOptionLabel={(x) => x.name}
+                        getOptionValue={(x) => x.name}
+                        styles={SelectStyle}
+                      />
+                    </div>
+                    <div className="SpecDropdown">
+                      <br />
+                      <b>Second Class's Specs:</b>
+                      <Select
+                        id="SpecChoice2"
+                        name="Second Class' Specs"
+                        className="SpecDropdown-input"
+                        placeholder="Select Specialization(s)"
+                        value={spec2}
+                        options={speclist2}
+                        onChange={handleSpecChange2}
+                        getOptionLabel={(x) => x.spec}
+                        getOptionValue={(x) => x.spec}
+                        isMulti
+                        styles={SelectStyle}
+                        closeMenuOnSelect={false}
+                      />
+                    </div>
+                    <div className="CommentSection">
+                      <br />
+                      <b>Optional Comments:</b>
+                      <input
+                        id="Choice2Text"
+                        name="Second Class' Specs"
+                        className="ChoiceText"
+                        type="text"
+                        placeholder="Anything you want to add?"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="ClassQuestions">
-                  <div className="ClassDropdown">
-                    <br />
-                    <b>Third Choice Class:</b>
-                    <Select
-                      id="ClassChoice3"
-                      name="Third Class"
-                      className="ClassDropdown-input"
-                      placeholder="3rd Choice Class"
-                      value={WoWClass3}
-                      options={WoWClassesTable}
-                      onChange={handleWoWClassChange3}
-                      getOptionLabel={(x) => x.name}
-                      getOptionValue={(x) => x.name}
-                      styles={SelectStyle}
-                    />
+                <div className="WoWClass">
+                  <div className="ClassLabel">
+                    <h3 className="QuestionLabel">3rd choice class spec?</h3>
                   </div>
-                  <div className="SpecDropdown">
-                    <br />
-                    <b>Second Class's Specs:</b>
-                    <Select
-                      id="SpecChoice3"
-                      name="Third Class' Specs"
-                      className="SpecDropdown-input"
-                      placeholder="Select Specialization(s)"
-                      value={spec3}
-                      options={speclist3}
-                      onChange={handleSpecChange3}
-                      getOptionLabel={(x) => x.spec}
-                      getOptionValue={(x) => x.spec}
-                      isMulti
-                      styles={SelectStyle}
-                      closeMenuOnSelect={false}
-                    />
-                  </div>
-                  <div className="CommentSection">
-                    <br />
-                    <b>Optional Comments:</b>
-                    <input
-                      id="Choice3Text"
-                      name="Third Class' Comments"
-                      className="ChoiceText"
-                      type="text"
-                      placeholder="Anything you want to add?"
-                    />
+                  <div className="ClassQuestions">
+                    <div className="ClassDropdown">
+                      <br />
+                      <b>Third Choice Class:</b>
+                      <Select
+                        id="ClassChoice3"
+                        name="Third Class"
+                        className="ClassDropdown-input"
+                        placeholder="3rd Choice Class"
+                        value={WoWClass3}
+                        options={WoWClassesTable}
+                        onChange={handleWoWClassChange3}
+                        getOptionLabel={(x) => x.name}
+                        getOptionValue={(x) => x.name}
+                        styles={SelectStyle}
+                      />
+                    </div>
+                    <div className="SpecDropdown">
+                      <br />
+                      <b>Second Class's Specs:</b>
+                      <Select
+                        id="SpecChoice3"
+                        name="Third Class' Specs"
+                        className="SpecDropdown-input"
+                        placeholder="Select Specialization(s)"
+                        value={spec3}
+                        options={speclist3}
+                        onChange={handleSpecChange3}
+                        getOptionLabel={(x) => x.spec}
+                        getOptionValue={(x) => x.spec}
+                        isMulti
+                        styles={SelectStyle}
+                        closeMenuOnSelect={false}
+                      />
+                    </div>
+                    <div className="CommentSection">
+                      <br />
+                      <b>Optional Comments:</b>
+                      <input
+                        id="Choice3Text"
+                        name="Third Class' Comments"
+                        className="ChoiceText"
+                        type="text"
+                        placeholder="Anything you want to add?"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="SubmitForm">
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit Form
-                </Button>
-              </div>
-            </form>
-            <div className="Divider">
-              <img src={divider2} />
+                <div className="SubmitForm">
+                  <button
+                    className="SubmitButton"
+                    onClick={handleSubmit}
+                    disabled={DisableSubmit}
+                  >
+                    Submit Form
+                  </button>
+                </div>
+                {/* <div className="Divider">
+                  <img src={divider2} />
+                </div> */}
+              </form>
             </div>
           </div>
         </main>
