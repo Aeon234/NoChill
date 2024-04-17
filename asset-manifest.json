@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/NoChill/static/css/main.cae948e4.css",
-    "main.js": "/NoChill/static/js/main.3b62c2f3.js",
+    "main.js": "/NoChill/static/js/main.20ee54f8.js",
     "static/js/453.a3980fc3.chunk.js": "/NoChill/static/js/453.a3980fc3.chunk.js",
     "static/media/WarWithin.jpg": "/NoChill/static/media/WarWithin.3ff149033081826c10c5.jpg",
     "static/media/Border_3.png": "/NoChill/static/media/Border_3.6b246f511d52df2986d2.png",
     "static/media/Divider.png": "/NoChill/static/media/Divider.d7aead5c86f391f77e50.png",
     "static/media/Questionnaire_Border.png": "/NoChill/static/media/Questionnaire_Border.5c350fcfc550c69b14c1.png",
-    "static/media/NoChill_Title2.png": "/NoChill/static/media/NoChill_Title2.177137d958ea6e30ef8c.png",
+    "static/media/NoChill_Title2.png": "/NoChill/static/media/NoChill_Title2.63aab8b798950b20f8b7.png",
     "static/media/button_background.png": "/NoChill/static/media/button_background.66c4f524afba7b5fed6e.png",
     "static/media/button_background_disabled.png": "/NoChill/static/media/button_background_disabled.144e5d506595ece420f9.png",
     "static/media/favicon.ico": "/NoChill/static/media/favicon.67a08ed7c41c8b643860.ico",
     "index.html": "/NoChill/index.html",
     "main.cae948e4.css.map": "/NoChill/static/css/main.cae948e4.css.map",
-    "main.3b62c2f3.js.map": "/NoChill/static/js/main.3b62c2f3.js.map",
+    "main.20ee54f8.js.map": "/NoChill/static/js/main.20ee54f8.js.map",
     "453.a3980fc3.chunk.js.map": "/NoChill/static/js/453.a3980fc3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cae948e4.css",
-    "static/js/main.3b62c2f3.js"
+    "static/js/main.20ee54f8.js"
   ]
 }
