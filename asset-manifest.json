@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/NoChill/static/css/main.808e865a.css",
-    "main.js": "/NoChill/static/js/main.e843ddc5.js",
+    "main.js": "/NoChill/static/js/main.b3514324.js",
     "static/js/453.a3980fc3.chunk.js": "/NoChill/static/js/453.a3980fc3.chunk.js",
     "static/media/WarWithin.jpg": "/NoChill/static/media/WarWithin.3ff149033081826c10c5.jpg",
     "static/media/Border_3.png": "/NoChill/static/media/Border_3.6b246f511d52df2986d2.png",
@@ -13,11 +13,11 @@
     "static/media/favicon.ico": "/NoChill/static/media/favicon.67a08ed7c41c8b643860.ico",
     "index.html": "/NoChill/index.html",
     "main.808e865a.css.map": "/NoChill/static/css/main.808e865a.css.map",
-    "main.e843ddc5.js.map": "/NoChill/static/js/main.e843ddc5.js.map",
+    "main.b3514324.js.map": "/NoChill/static/js/main.b3514324.js.map",
     "453.a3980fc3.chunk.js.map": "/NoChill/static/js/453.a3980fc3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.808e865a.css",
-    "static/js/main.e843ddc5.js"
+    "static/js/main.b3514324.js"
   ]
 }
