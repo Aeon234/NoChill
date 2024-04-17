@@ -37,7 +37,7 @@ html {
   padding-left: 20px;
   padding-top: 5px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(58, 39, 29, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -272,9 +272,36 @@ html {
   outline: 2px solid hsla(220, 100%, 50%, 80%);
 }
 
+.OtherCommentsText {
+  width: 1530px;
+  display: flex;
+  margin-top: 0.5rem;
+  margin-left: 10px;
+  margin-bottom: 0.5rem;
+
+  height: 50px;
+
+  color: #000;
+
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  box-shadow: none;
+
+  border: 1px solid #ccc;
+
+  outline: 0;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  padding: 20px;
+}
+
 .SubmitForm {
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -321,4 +348,46 @@ html {
   border-image: url("Background/Button/button_disabled_hover.png") 30 fill /
     30px / 1px;
   color: #fff;
+}
+
+/*=== Trigger  ===*/
+.animate {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.delay {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+/*=== FADE IN DOWN ===*/
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -75%, 0);
+    transform: translate3d(0, -75%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -75%, 0);
+    transform: translate3d(0, -75%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }

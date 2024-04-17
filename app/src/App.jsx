@@ -1,4 +1,4 @@
-import logo from "./NoChill_Title.png";
+import logo from "./NoChill_Title2.png";
 import favicon from "./favicon.ico";
 import divider from "./Background/Divider.png";
 import divider2 from "./Background/Border_3.png";
@@ -7,6 +7,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import Select from "react-select";
+// import { useNavigate } from "react-router-dom";
 
 function App() {
   document.title = "No Chill Roster";
@@ -24,16 +25,23 @@ function App() {
   const [spec3, setSpec3] = useState(null);
   const [speclist3, setSpeclist3] = useState([]);
 
+  const [OtherComments, setOtherComments] = useState("");
+
   const scriptUrl =
     "https://script.google.com/macros/s/AKfycbyk0fXddO5b7SOyGtfjlXKaf_XmgMpIQ4AlXqTVwba7OwL6PQVfAeakvGZmRqg47IQw/exec";
   // const DisableSubmit = false;
+  const SubmittingInProgress = false;
   const DisableSubmit = !(
     document.getElementById("PlayerName_Input")?.value &&
     WoWClass1?.name &&
-    spec1?.map((obj) => obj.spec)?.join(", ")
+    spec1?.map((obj) => obj.spec)?.join(", ") &&
+    !SubmittingInProgress
   );
 
+  // const navigate = useNavigate();
+
   const handleSubmit = (event) => {
+    SubmittingInProgress = true;
     event.preventDefault();
 
     const formData = new FormData();
@@ -69,19 +77,33 @@ function App() {
       "Third Class Comments",
       document.getElementById("Choice3Text").value
     );
+    formData.append(
+      "Additional Comments",
+      document.getElementById("AdditionalComments_Input").value
+    );
     formData.append("Date Submitted", Date());
 
     fetch(scriptUrl, {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          window.location.href = "/RosterSubmitted";
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
       .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
+    SubmittingInProgress = false;
   };
 
   const handlePlayerNameChange = (obj) => {
     setPlayerName(obj);
+  };
+  const handleAddCommentChange = (obj) => {
+    setOtherComments(obj);
   };
 
   const handleWoWClassChange1 = (obj) => {
@@ -211,7 +233,7 @@ function App() {
         </header>
 
         <main>
-          <div className="Questionnaire">
+          <div className="Questionnaire animate fadeInDown delay">
             <div className="RosterClassQuestionnaire">
               <h2 className="QuestionnaireTitle">
                 No Chill - The War Within Roster
@@ -393,6 +415,20 @@ function App() {
                         placeholder="Anything you want to add?"
                       />
                     </div>
+                  </div>
+                </div>
+                <div className="PlayerName">
+                  <div className="AdditionalComments">
+                    <h3 className="QuestionLabel">Additional Comments:</h3>
+                    <input
+                      id="AdditionalComments_Input"
+                      name="Additional Comments"
+                      className="OtherCommentsText"
+                      value={OtherComments}
+                      onChange={(x) => handleAddCommentChange(x.target.value)}
+                      type="text"
+                      placeholder="What else do you want to say?"
+                    />
                   </div>
                 </div>
                 <div className="SubmitForm">
