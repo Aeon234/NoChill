@@ -1,5 +1,5 @@
 {
-  "name": "No Chill - Ma'Ganis",
+  "name": "No Chill",
   "version": "0.1.0",
   "homepage": "https://aeon234.github.io/NoChill",
   "private": true,
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b main -d build",
     "start": "WATCHPACK_POLLING=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
