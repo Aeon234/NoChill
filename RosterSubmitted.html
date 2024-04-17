@@ -1,1 +1,60 @@
-<h3>Hello World</h3>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster Submitted</title>
+    <link rel="stylesheet" href="RosterSubmitted.css">
+</head>
+
+<body>
+    <div id="canvas">
+        <header id="header-container">
+            <div id="header-title">
+                <div id="logo" data-content-field="site-title">
+
+                    <div class="logo" data-shrink-original-size="26" style="letter-spacing: 0em;">
+                        <a href="/">
+
+                            <img src="NoChill_Title2.png" alt="Aeon Mercer">
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <main>
+
+        </main>
+
+    </div>
+    <div id="root"></div> <!-- This is where the React component will be rendered -->
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        // Define the GenericContainer React component
+        class GenericContainer extends React.Component {
+            render() {
+                return (
+
+                    <div className="GenericContainer">
+                        {/* Your content goes here */}
+                        <h1>Hello, this is a generic container!</h1>
+                    </div>
+                );
+            }
+        }
+
+        // Render the GenericContainer component into the root element
+        ReactDOM.render(<GenericContainer />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
