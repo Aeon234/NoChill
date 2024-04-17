@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/NoChill/static/css/main.b1328b95.css",
+    "main.css": "/NoChill/static/css/main.81d29d2a.css",
     "main.js": "/NoChill/static/js/main.a3eae8e1.js",
     "static/js/453.a3980fc3.chunk.js": "/NoChill/static/js/453.a3980fc3.chunk.js",
     "static/media/WarWithin.jpg": "/NoChill/static/media/WarWithin.3ff149033081826c10c5.jpg",
@@ -12,12 +12,12 @@
     "static/media/button_background_disabled.png": "/NoChill/static/media/button_background_disabled.144e5d506595ece420f9.png",
     "static/media/favicon.ico": "/NoChill/static/media/favicon.67a08ed7c41c8b643860.ico",
     "index.html": "/NoChill/index.html",
-    "main.b1328b95.css.map": "/NoChill/static/css/main.b1328b95.css.map",
+    "main.81d29d2a.css.map": "/NoChill/static/css/main.81d29d2a.css.map",
     "main.a3eae8e1.js.map": "/NoChill/static/js/main.a3eae8e1.js.map",
     "453.a3980fc3.chunk.js.map": "/NoChill/static/js/453.a3980fc3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1328b95.css",
+    "static/css/main.81d29d2a.css",
     "static/js/main.a3eae8e1.js"
   ]
 }
